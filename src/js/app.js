@@ -1,18 +1,32 @@
-/* Declaracion de variables globales */
+/* Declaración de variables globales */
 let MAIN;
 let MODAL_POST;
 let BTN_SHOW_POST;
-let Btn_CANCEL_POST;
+let BTN_CANCEL_POST;
 
-const showPostModal = () => {
-    MODAL_POST.style.display = 'none';
-    MODAL_POST.style.display = 'block';
+/* Funciones */
+const showPostModal =()=>{
+  MAIN.style.display= 'none';
+  MODAL_POST.style.display= 'block';
 
-    setTimeout(() => {
-        MODAL_POST.style.transform = 'translateY(0)';});       
+  setTimeout(()=>{
+    MODAL_POST.style.transform = 'translateY(0)';
+  })
 }
 
-const closePostModal = () => {
-    MAIN.style.display = 'block';
-    MODAL_POST.style.transform = 'translateY(100vh)';
+const closePostModal =()=>{
+  MAIN.style.display= 'block';
+  MODAL_POST.style.transform='translateY(100vh)';
 }
+
+/* Cuando se cargue el DOM */
+window.addEventListener('load', ()=>{
+  MAIN = document.querySelector('#main');
+  MODAL_POST= document.querySelector('#modal-post-section');
+  BTN_SHOW_POST= document.querySelector('#btn-upload-post');
+  BTN_CANCEL_POST= document.querySelector('#btn-post-cancel');
+
+  /* Agregando eventos a botones */
+  BTN_SHOW_POST.addEventListener('click', showPostModal);
+  BTN_CANCEL_POST.addEventListener('click', closePostModal)
+})
